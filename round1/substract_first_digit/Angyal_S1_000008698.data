@@ -1,0 +1,32 @@
+def get_length(n):
+    l = 0
+    while n != 0:
+        n = n // 10
+        l += 1
+    return l
+
+def substarcting(n):
+    l = get_length(n)
+    s = 0
+    while n != 0:
+        first_digit = n // (10 ** (l - 1))
+        if first_digit == 0:
+            l -= 1
+        else:
+            n -= first_digit
+            s += 1
+    return s
+    
+
+def main():
+    input_file = open("S1.in", "r")
+    output_file = open("S1.out", "w")
+    t = int(input_file.readline())
+    for i in range(t):
+        n = int(input_file.readline())
+        output_file.write(str(substarcting(n)) + '\n')
+    input_file.close()
+    output_file.close()
+
+
+main()
